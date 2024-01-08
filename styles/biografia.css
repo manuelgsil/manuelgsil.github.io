@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap');
+
+:root {
+    --colorArticle: #F4F4F6;
+    --colorFondo: #FFFFFF;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+
+body {
+    min-height: 100vh;
+    width: auto;
+
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Inter', sans-serif;
+}
+
+a,
+a:link,
+a:visited {
+    color: inherit;
+    /* Hereda el color del elemento padre */
+    text-decoration: none;
+    /* Opcional: quitar el subrayado */
+}
+
+header {
+    padding: 2% 4%;
+    line-height: 2rem;
+
+    && p {
+        display: inline;
+    }
+
+    && h2 {
+        transition-duration: 0.5;
+        width: fit-content;
+
+        :hover {
+            background-color: red;
+        }
+    }
+}
+
+.bio {
+    display: flex;
+    flex-flow: row wrap;
+    overflow: hidden;
+    background-color: var(--colorFondo);
+    justify-content: center;
+    padding: 24px;
+    gap: 20px;
+
+}
+
+article {
+
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    background-color: var(--colorArticle);
+}
+
+.mgs {
+    display: flex;
+
+    && .foto {
+        width: 30%;
+
+        && img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    && .comentarios {
+        font-size: 14px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        && p {
+            background-color: lightgray;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 2px;
+            margin-inline-end: 0px;
+        }
+    }
+}
+
+.habilidades {
+    line-height: 2rem;
+    min-width: 40%;
+}
+
+
+.objetivo {
+    line-height: 2rem;
+    min-width: 50%;
+    flex: 1;
+
+}
+
+/* REHACER ESTO CON JAVASCRIPT */
+.stack {
+    min-width: 50%;
+
+    /* Esta parte es un poco locura */
+    .slider-logos {
+        width: fit-content;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        /* & con el ampersan puedo dirigirme directamente al contenedor */
+        &:before,
+        &:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            width: 7%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        &:after {
+            right: 0;
+            background: linear-gradient(to left, #F4F4F6, transparent);
+        }
+
+        &:before {
+            left: 0;
+            background: linear-gradient(to right, #F4F4F6, transparent);
+
+        }
+
+
+        .listaLogo1,
+        .listaLogo2 {
+            display: flex;
+            animation: 15s slide infinite linear;
+            width: 100%;
+
+            && li {
+                padding: 1rem;
+                margin: 0 1.70%;
+                /* NO TOCAR ESTE MARGEN 1.7 */
+
+                && img {
+                    width: 50px;
+                }
+            }
+
+            &:hover {
+                animation-play-state: paused;
+            }
+        }
+
+        .listaLogo2 {
+            animation-direction: reverse;
+        }
+    }
+}
+
+/* ANIMACION */
+
+@keyframes slide {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+
+.intereses {
+    min-width: 33%;
+    width: fit-content;
+    white-space-collapse: preserve-breaks;
+}
+
+.contacto {
+    line-height: 2rem;
+
+    p {
+        width: fit-content;
+        outline: 2px black solid;
+
+    }
+
+    div {
+        padding: 10px;
+        display: flex;
+        justify-content: space-evenly;
+
+        picture {
+            text-align: center;
+            font-size: 14px;
+            padding: 2%;
+        }
+
+        img {
+            width: 50px;
+        }
+    }
+
+}
+
+@media (max-width: 809px) {
+    .bio {
+        display: grid;
+    }
+
+    article {
+        display: grid;
+        width: 100%;
+    }
+
+    .mgs {
+        display: grid;
+        /* Lo tengo que machacar con el de arriba */
+
+        && .foto {
+            min-width: 100%;
+
+            && img {
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        && .comentarios {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    .stack {
+        gap: 2em;
+
+        && .slider {
+            display: grid;
+            gap: 1em;
+        }
+
+    }
+
+
+
+
+}
+
+
+
+@media (min-width: 810px) and (max-width: 1279px) {}

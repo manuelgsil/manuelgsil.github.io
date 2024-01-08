@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap');
+
+:root {
+    --colorArticle: #F4F4F6;
+    --colorFondo: #FFFFFF;
+}
+
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+
+body {
+    height: 100dvh;
+    background-color: #FFFFFF;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Inter', sans-serif;
+
+}
+
+a,
+a:link,
+a:visited {
+    color: inherit;
+    /* Hereda el color del elemento padre */
+    text-decoration: none;
+    /* Opcional: quitar el subrayado */
+}
+
+.flex_container {
+    display: flex;
+    flex-flow: row wrap;
+    overflow: hidden;
+    background-color: var(--colorFondo);
+    justify-content: center;
+    gap: 8px;
+    padding: 24px;
+}
+
+article {
+    flex-basis: 50dvh;
+    /*  */
+    min-width: 33%;
+    min-height: 66dvh;
+    max-height: 70dvh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 2fr);
+
+}
+
+.presentacion {
+    && h3 {
+        grid-column: 1 / span 3;
+        font-size: 26px;
+
+    }
+
+    .descripcion {
+        grid-column: 1 / span 3;
+    }
+
+    && .lugar_cita {
+        grid-row: 4;
+        grid-column: 1 / span 2;
+        align-self: self-end;
+    }
+}
+
+.biografia {
+    background-color: var(--colorArticle);
+    transition-duration: 0.5s;
+
+    &:hover {
+        box-shadow: 5px 5px 20px gray;
+    }
+
+    && h5 {
+        grid-column: 4;
+        justify-self: right;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    && .foto {
+        padding: 5%;
+        margin-left: 24%;
+        max-width: 50%;
+        grid-column: 1 / span 4;
+        grid-row: 2 / span 2;
+
+        && img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition-duration: 0.5s;
+
+            &:hover {
+                transform: rotate(10deg);
+            }
+        }
+    }
+
+    && .pieFoto {
+        grid-column: 1 / span 3;
+        grid-row: 4;
+        align-self: self-end;
+    }
+}
+
+.social {
+
+    && .intereses {
+        grid-column: 3 / span 4;
+        grid-row: 1 / span 2;
+    }
+
+    && .redes {
+        grid-column: 3/ span 4;
+        grid-row: 4;
+    }
+
+    && span {
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        display: block;
+        line-height: 3em;
+
+    }
+
+    && li {
+        line-height: 1.5em;
+    }
+}
+
+.proyectos {
+    background-color: var(--colorArticle);
+    transition: background-color 0.3s ease;
+    position: relative;
+
+    /* Agregamos una transición suave al cambio de color */
+    &:hover {
+        .loading-dots {
+            opacity: 1;   
+            animation: pulse 1.5s infinite; /* Aplicamos la animación al pasar el ratón */
+
+        }
+    }
+
+    && h5 {
+        text-align: end;
+        font-weight: 500;
+        font-size: 20px;
+        grid-column: 5;
+    }
+
+    p {
+        grid-column: 2 / span 3;
+        grid-row: 2 / span 2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .loading-dots {
+        position: absolute;
+        top: 50%;
+        right: 45%;
+        font-size: 50px;
+        opacity: 0;
+        transition: opacity 600ms ease;
+        /* Tamaño de los puntos */
+        scale: 2;
+    }
+
+}
+
+
+.libros {
+    background-color: var(--colorArticle);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 30px;
+
+    &:hover {
+        h5 {
+            color: red;
+            /* Color al hacer hover */
+        }
+    }
+
+    && h5 {
+        text-align: end;
+        font-weight: 500;
+        font-size: 20px;
+        transition: color 0.3s ease;
+        /* Efecto de transición al cambiar el color */
+        cursor: alias;
+
+    }
+
+    && .carrusel {
+        height: 80%;
+        width: 80%;
+        align-self: center;
+        overflow: hidden;
+        position: relative;
+
+        &:before,
+        &:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 10%;
+            z-index: 1;
+        }
+
+        &:after {
+            top: 0px;
+            background: linear-gradient(to bottom, #F4F4F6, transparent);
+        }
+
+        &:before {
+            bottom: 0;
+            background: linear-gradient(to top, #F4F4F6, transparent);
+        }
+
+        && iframe {
+            width: calc(100% + 40px);
+            /*  Asi quitamos la barra de navegacion */
+            height: calc(100% + 40px);
+            overflow: hidden;
+            scroll-behavior: smooth;
+            transition: transform 1s ease-in-out;
+        }
+    }
+
+}
+
+.final {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    && div {
+        display: inherit;
+        width: 50%;
+        height: 32%;
+
+        && p {
+            align-self: center;
+        }
+    }
+}
+
+span {
+    width: 100%;
+    height: 10%;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    order: 6;
+}
+
+
+
+/* En 1394 se va al carajo */
+@media screen and (min-width: 340px) and (max-width: 1300px) {
+    .social {
+        visibility: hidden;
+        order: 3;
+        /* Intentar cambiar el orden */
+
+    }
+
+    .proyectos {
+        order: 2;
+        /* Cambiar el orden para que ocupe el lugar de .social */
+    }
+
+    .leyendo {
+        order: 4;
+        /* Asegura que .leyendo aparezca después de .proyectos */
+    }
+
+    .final {
+        order: 5;
+        /* Asegura que .final aparezca después de .leyendo */
+    }
+
+    .volver {
+        order: 6;
+        /* Asegura que .volver aparezca al final */
+    }
+
+}
