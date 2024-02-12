@@ -1,274 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap");
 :root {
-    --colorArticle: #F4F4F6;
-    --colorFondo: #FFFFFF;
+  --colorArticle: #f4f4f6;
+  --colorFondo: #ffffff;
 }
-
 html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
-
 body {
-    min-height: 100vh;
-    width: auto;
-
+  min-height: 100vh;
+  width: auto;
 }
-
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    font-family: 'Inter', sans-serif;
+  box-sizing: inherit;
+  font-family: "Inter", sans-serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
-
 a,
 a:link,
 a:visited {
-    color: inherit;
-    /* Hereda el color del elemento padre */
-    text-decoration: none;
-    /* Opcional: quitar el subrayado */
+  color: inherit;
+  text-decoration: none;
 }
-
 header {
-    padding: 2% 4%;
-    line-height: 2rem;
+  line-height: 2rem;
+  padding: 2% 4%;
+
+  && p {
+    display: inline;
+  }
+  && h2 {
+    transition-duration: 0.5;
+    width: fit-content;
+
+    :hover {
+      background-color: red;
+    }
+  }
+}
+.bio {
+  background-color: var(--colorFondo);
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+}
+article {
+  background-color: var(--colorArticle);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+}
+.mgs {
+  display: flex;
+
+  && .foto {
+    width: 30%;
+
+    && img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+    }
+  }
+  && .comentarios {
+    display: grid;
+    font-size: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
 
     && p {
-        display: inline;
+      background-color: lightgray;
+      margin-block-end: 1em;
+      margin-block-start: 1em;
+      margin-inline-end: 0px;
+      margin-inline-start: 2px;
     }
-
-    && h2 {
-        transition-duration: 0.5;
-        width: fit-content;
-
-        :hover {
-            background-color: red;
-        }
-    }
+  }
 }
-
-.bio {
-    display: flex;
-    flex-flow: row wrap;
-    overflow: hidden;
-    background-color: var(--colorFondo);
-    justify-content: center;
-    padding: 24px;
-    gap: 20px;
-
-}
-
-article {
-
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 10px;
-    background-color: var(--colorArticle);
-}
-
-.mgs {
-    display: flex;
-
-    && .foto {
-        width: 30%;
-
-        && img {
-            width: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-
-    && .comentarios {
-        font-size: 14px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        && p {
-            background-color: lightgray;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 2px;
-            margin-inline-end: 0px;
-        }
-    }
-}
-
 .habilidades {
-    line-height: 2rem;
-    min-width: 40%;
+  line-height: 2rem;
+  min-width: 40%;
 }
-
-
 .objetivo {
-    line-height: 2rem;
-    min-width: 50%;
-    flex: 1;
-
+  flex: 1;
+  line-height: 2rem;
+  min-width: 50%;
 }
-
-/* REHACER ESTO CON JAVASCRIPT */
 .stack {
-    min-width: 50%;
-
-    /* Esta parte es un poco locura */
-    .slider-logos {
-        width: fit-content;
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-
-        /* & con el ampersan puedo dirigirme directamente al contenedor */
-        &:before,
-        &:after {
-            position: absolute;
-            content: "";
-            top: 0;
-            width: 7%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        &:after {
-            right: 0;
-            background: linear-gradient(to left, #F4F4F6, transparent);
-        }
-
-        &:before {
-            left: 0;
-            background: linear-gradient(to right, #F4F4F6, transparent);
-
-        }
-
-
-        .listaLogo1,
-        .listaLogo2 {
-            display: flex;
-            animation: 15s slide infinite linear;
-            width: 100%;
-
-            && li {
-                padding: 1rem;
-                margin: 0 1.70%;
-                /* NO TOCAR ESTE MARGEN 1.7 */
-
-                && img {
-                    width: 50px;
-                }
-            }
-
-            &:hover {
-                animation-play-state: paused;
-            }
-        }
-
-        .listaLogo2 {
-            animation-direction: reverse;
-        }
-    }
+  min-width: 300px; /* Tendria q modificar este tamaño */
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
 }
-
-/* ANIMACION */
-
-@keyframes slide {
-    from {
-        transform: translateX(0%);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
-
-}
-
-.intereses {
-    min-width: 33%;
+.scroller {
+  width: 100%;
+  height: 100%;
+  & .scroller__inner {
     width: fit-content;
-    white-space-collapse: preserve-breaks;
+    display: flex;
+    gap: 1rem;
+    padding-block: 1rem;
+    & img {
+      width: 50px;
+    }
+  }
+}
+.scroller[data-animated="true"] {
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  overflow: hidden;
+}
+.scroller[data-animated="true"] .scroller__inner {
+  flex-wrap: nowrap;
+
+  animation: scroll var(--_animation-duration, 10s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
 }
 
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+.intereses {
+  min-width: 33%;
+  white-space-collapse: preserve-breaks;
+  width: fit-content;
+}
 .contacto {
-    line-height: 2rem;
+  line-height: 2rem;
 
-    p {
-        width: fit-content;
-        outline: 2px black solid;
+  p {
+    width: fit-content;
+  }
+  div {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
 
+    picture {
+      display: block;
+      font-size: 14px;
+      padding: 2%;
+      text-align: center;
     }
-
-    div {
-        padding: 10px;
-        display: flex;
-        justify-content: space-evenly;
-
-        picture {
-            text-align: center;
-            font-size: 14px;
-            padding: 2%;
-        }
-
-        img {
-            width: 50px;
-        }
+    img {
+      width: 50px;
     }
-
+  }
 }
-
 @media (max-width: 809px) {
-    .bio {
-        display: grid;
-    }
+  .bio {
+    display: grid;
+  }
+  article {
+    display: grid;
+    width: 100%;
+  }
+  .mgs {
+    display: grid;
 
-    article {
-        display: grid;
+    /* Lo tengo que machacar con el de arriba */
+    && .foto {
+      min-width: 100%;
+
+      && img {
+        object-fit: cover;
+        object-position: center;
         width: 100%;
+      }
     }
-
-    .mgs {
-        display: grid;
-        /* Lo tengo que machacar con el de arriba */
-
-        && .foto {
-            min-width: 100%;
-
-            && img {
-                width: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-
-        && .comentarios {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
+    && .comentarios {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
+  }
+  .stack {
+    width: 100%;
+    
+  }
 
-    .stack {
-        gap: 2em;
-
-        && .slider {
-            display: grid;
-            gap: 1em;
-        }
-
-    }
-
-
-
-
+  /* TEngo que poner algo del stack en pantallas medianas */
 }
-
-
-
-@media (min-width: 810px) and (max-width: 1279px) {}
+@media (min-width: 810px) and (max-width: 1279px) {
+}

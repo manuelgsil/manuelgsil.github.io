@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap");
+:root {
+  --colorArticle: #f4f4f6;
+  --colorFondo: #ffffff;
+}
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #ffffff;
+  height: 100dvh;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  font-family: "Inter", sans-serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+a,
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+
+  /* Hereda el color del elemento padre */
+  /* Opcional: quitar el subrayado */
+}
+
+.flex_container {
+  background-color: var(--colorFondo);
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+}
+article {
+  display: grid;
+  flex-basis: 50dvh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 2fr);
+  max-height: 70dvh;
+  min-height: 66dvh;
+  min-width: 33%;
+
+  /*  */
+}
+.presentacion {
+  && h3 {
+    font-size: 26px;
+    grid-column: 1 / span 3;
+  }
+  .descripcion {
+    grid-column: 1 / span 3;
+  }
+  && .lugar_cita {
+    align-self: self-end;
+    grid-column: 1 / span 2;
+    grid-row: 4;
+  }
+}
+.biografia {
+  background-color: var(--colorArticle);
+  transition-duration: 0.5s;
+
+  &:hover {
+    box-shadow: 5px 5px 20px gray;
+  }
+  && h5 {
+    font-size: 20px;
+    font-weight: 500;
+    grid-column: 4;
+    justify-self: right;
+  }
+  && .foto {
+    grid-column: 1 / span 4;
+    grid-row: 2 / span 2;
+    width: 100%;
+    height: 100%;
+    & img {
+      object-fit: scale-down;
+      transition-duration: 0.5s;
+      width: 100%;
+      height: 100%;
+
+      &:hover {
+        transform: rotate(10deg);
+      }
+    }
+  }
+
+  && .pieFoto {
+    align-self: self-end;
+    grid-column: 1 / span 3;
+    grid-row: 4;
+  }
+}
+.social {
+  && .intereses {
+    grid-column: 3 / span 4;
+    grid-row: 1 / span 2;
+  }
+  && .redes {
+    grid-column: 3 / span 4;
+    grid-row: 4;
+  }
+  && span {
+    display: block;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    line-height: 3em;
+  }
+  && li {
+    line-height: 1.5em;
+  }
+}
+
+.proyectos {
+  background-color: var(--colorArticle);
+  position: relative;
+  transition: background-color 0.3s ease;
+
+  /* Agregamos una transición suave al cambio de color */
+  &:hover {
+    .loading-dots {
+      animation: pulse 1.5s infinite;
+      opacity: 1;
+
+      /* Aplicamos la animación al pasar el ratón */
+    }
+  }
+  && h5 {
+    font-size: 20px;
+    font-weight: 500;
+    grid-column: 5;
+    text-align: end;
+  }
+  p {
+    align-self: center;
+    grid-column: 2 / span 3;
+    grid-row: 2 / span 2;
+    justify-self: center;
+  }
+  .loading-dots {
+    font-size: 50px;
+    opacity: 0;
+    position: absolute;
+    right: 45%;
+    scale: 2;
+    top: 50%;
+    transition: opacity 600ms ease;
+
+    /* Tamaño de los puntos */
+  }
+}
+/* Estilo para el bloque de libros */
+.libros {
+  background-color: var(--colorArticle);
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 30px;
+
+  &:hover {
+    h5 {
+      color: red;
+
+      /* Color al hacer hover */
+    }
+  }
+  && h5 {
+    cursor: alias;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: end;
+    transition: color 0.3s ease;
+
+    /* Efecto de transición al cambiar el color */
+  }
+  && .carrusel {
+    align-self: center;
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+
+    &:before,
+    &:after {
+      content: "";
+      height: 10%;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+    &:after {
+      background: linear-gradient(to bottom, #f4f4f6, transparent);
+      top: 0px;
+    }
+    &:before {
+      background: linear-gradient(to top, #f4f4f6, transparent);
+      bottom: 0;
+    }
+    && iframe {
+      height: calc(100% + 40px);
+      overflow: hidden;
+      scroll-behavior: smooth;
+      transition: transform 1s ease-in-out;
+      width: calc(100% + 40px);
+
+      /*  Asi quitamos la barra de navegacion */
+    }
+  }
+}
+/* Estilos para el bloque final */
+
+.final {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  && div {
+    display: inherit;
+    height: 32%;
+    width: 50%;
+
+    && p {
+      align-self: center;
+    }
+  }
+}
+
+span {
+  font-size: 20px;
+  height: 10%;
+  order: 6;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+@media screen and (min-width: 340px) and (max-width: 1300px) {
+  .social {
+    order: 3;
+    visibility: hidden;
+
+    /* Intentar cambiar el orden */
+  }
+  .proyectos {
+    order: 2;
+
+    /* Cambiar el orden para que ocupe el lugar de .social */
+  }
+  .leyendo {
+    order: 4;
+
+    /* Asegura que .leyendo aparezca después de .proyectos */
+  }
+  .final {
+    order: 5;
+
+    /* Asegura que .final aparezca después de .leyendo */
+  }
+  .volver {
+    order: 6;
+
+    /* Asegura que .volver aparezca al final */
+  }
+}
