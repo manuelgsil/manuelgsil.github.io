@@ -3,9 +3,9 @@
   --colorArticle: #f4f4f6;
   --colorFondo: #ffffff;
   --colorTexto: #000000;
-  --colorCompetencias:#f0f0f0;
-  --colorhHoverCompentecias:#e0e0e0;
-  --colorTextoIndice:#666666
+  --colorCompetencias: #f0f0f0;
+  --colorhHoverCompentecias: #e0e0e0;
+  --colorTextoIndice: #666666;
 }
 html {
   box-sizing: border-box;
@@ -17,8 +17,8 @@ body {
     --colorArticle: #0f0f0f;
     --colorFondo: #1a1a1a;
     --colorTexto: #ffffff;
-    --colorCompetencias:#0f0f0f;
-    --colorhHoverCompentecias:#1a1a1a;
+    --colorCompetencias: #0f0f0f;
+    --colorhHoverCompentecias: #1a1a1a;
   }
   background-color: var(--colorFondo);
   color: var(--colorTexto);
@@ -43,13 +43,12 @@ header {
   line-height: 2rem;
   padding: 2% 4%;
   & p {
-    color:var(--colorTextoIndice);
+    color: var(--colorTextoIndice);
     display: inline;
   }
 }
 img {
   width: 100%;
-
 }
 main {
   background-color: var(--colorFondo);
@@ -97,4 +96,16 @@ h1 {
   &:hover {
     background-color: var(--colorArticle);
   }
+}
+p{
+  padding: 0.2rem;
+}
+.stack {
+  display: inline-flex;
+  width: 5%;
+  font-weight: bold;
+  & img{
+    margin-right: 1rem;
+  }
+  
 }
