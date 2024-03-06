@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "nombre": "Almería",
+        "coste_alojamiento": 12,
+        "coste_alimentacion": 22,
+        "imagen": "/img/almeria.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Granada",
+        "coste_alojamiento": 143.2,
+        "coste_alimentacion": 22,
+        "imagen": "granada.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Sevilla",
+        "coste_alojamiento": 95.5,
+        "coste_alimentacion": 25,
+        "imagen": "sevilla.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Córdoba",
+        "coste_alojamiento": 75.8,
+        "coste_alimentacion": 20,
+        "imagen": "cordoba.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Málaga",
+        "coste_alojamiento": 135.6,
+        "coste_alimentacion": 30,
+        "imagen": "malaga.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Madrid",
+        "coste_alojamiento": 200.3,
+        "coste_alimentacion": 35,
+        "imagen": "madrid.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Barcelona",
+        "coste_alojamiento": 220.5,
+        "coste_alimentacion": 40,
+        "imagen": "barcelona.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Valencia",
+        "coste_alojamiento": 150.2,
+        "coste_alimentacion": 28,
+        "imagen": "valencia.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Bilbao",
+        "coste_alojamiento": 180.4,
+        "coste_alimentacion": 32,
+        "imagen": "bilbao.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Toledo",
+        "coste_alojamiento": 100.8,
+        "coste_alimentacion": 25,
+        "imagen": "toledo.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "Salamanca",
+        "coste_alojamiento": 110.6,
+        "coste_alimentacion": 27,
+        "imagen": "salamanca.jpg"
+    },
+    {
+        "id": 12,
+        "nombre": "Segovia",
+        "coste_alojamiento": 95.2,
+        "coste_alimentacion": 23,
+        "imagen": "segovia.jpg"
+    },
+    {
+        "id": 13,
+        "nombre": "San Sebastián",
+        "coste_alojamiento": 170.9,
+        "coste_alimentacion": 35,
+        "imagen": "san_sebastian.jpg"
+    },
+    {
+        "id": 14,
+        "nombre": "Cádiz",
+        "coste_alojamiento": 130.7,
+        "coste_alimentacion": 28,
+        "imagen": "cadiz.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "Zaragoza",
+        "coste_alojamiento": 120.5,
+        "coste_alimentacion": 26,
+        "imagen": "zaragoza.jpg"
+    }
+]

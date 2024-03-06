@@ -1,0 +1,257 @@
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background: radial-gradient(black 3px, transparent 4px),
+    radial-gradient(black 3px, transparent 4px),
+    linear-gradient(#fff 4px, transparent 0),
+    linear-gradient(
+      45deg,
+      transparent 74px,
+      transparent 75px,
+      #a4a4a4 75px,
+      #a4a4a4 76px,
+      transparent 77px,
+      transparent 109px
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 75px,
+      transparent 76px,
+      #a4a4a4 76px,
+      #a4a4a4 77px,
+      transparent 78px,
+      transparent 109px
+    ),
+    #fff;
+  background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  position: absolute;
+}
+.wrapper {
+  min-height: 80dvh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.wrapper > * {
+  padding: 10px;
+  margin: 10px;
+  flex: 1 100%;
+}
+header,
+footer {
+  background-color: rgb(255, 82, 82);
+  height: 170px;
+  text-align: center;
+  border-radius: 2rem;
+  & p {
+    font-size: 30px;
+    color: white;
+    margin: 70px 0;
+    letter-spacing: 0.5rem;
+  }
+}
+
+.destinos {
+  min-width: 30%;
+  height: 400px;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  flex: 1;
+
+  ul {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    justify-content: flex-start;
+  }
+  & .puntos {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e6e5e5;
+    box-shadow: 42px 42px 84px #8a8989, -42px -42px 84px #ffffff;
+    margin-left: 0.4rem;
+    padding: 0.2rem;
+    &.activo {
+      background-color: #ff5252;
+    }
+  }
+
+  & button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    font-size: 20px;
+  }
+}
+
+.destinos .carrousel {
+  width: 200%;
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  height: 100%;
+  transition: all 0.5s ease;
+  transform: translateX(0%);
+}
+.destinos .destino {
+  width: calc(100% / 7);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  & h1 {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    transition: all ease 0.5s;
+    letter-spacing: 10px;
+    &:hover {
+      transition: 1s;
+      scale: 1.5;
+      color: yellow;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  & p {
+    width: fit-content;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.contenedor-calculadora {
+  height: 500px;
+  min-width: 30%;
+  overflow-y: scroll;
+  & h1 {
+    background-color: white;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    letter-spacing: 3px;
+  }
+}
+
+.calculadora,
+.ciudades {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+.calculadora > * {
+  height: 100px;
+  flex: 1 100%;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+}
+
+.ciudades {
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+}
+.ciudad-escogida {
+  background-color: white;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 10px;
+  transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  & h3 {
+    text-align: center;
+  }
+  & p {
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    & button {
+      font-size: 5px;
+      padding: 0.3rem;
+      float: right;
+    }
+  }
+}
+.ciudad-escogida.eliminando {
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  opacity: 0;
+  transform: scale(0.9);
+}
+button {
+  font-size: 20px;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #ff5252;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  &:hover {
+    background-color: #fff;
+    color: #ff5252;
+    border: 2px solid #ff5252;
+    box-shadow: 5px 5px 0px #ff5252;
+  }
+  &:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+}
+.coste-total {
+  text-align: center;
+  padding: 1rem;
+  & p {
+    padding: 0.2rem;
+    border-bottom: 1px black solid;
+    background-color: white;
+    font-size: 20px;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  & button {
+    margin: 0.5rem 0;
+  }
+}
+
+@media all and (min-width: 800px) {
+  .contenedor-calculadora {
+    flex: 1;
+  }
+  .contenedor-viajes {
+    flex: 1;
+  }
+}

@@ -1,76 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CV</title>
     <!-- FONTS -->
 
     <!-- MEDIA -->
-    <link rel="stylesheet" href="styles/index.css">
-</head>
+    <link rel="stylesheet" href="styles/index.css" />
+    <script defer src="javascript/index.js"></script>
+  </head>
 
-
-<body>
+  <body>
     <main>
-        <section class="flex_container">
-            <article class="presentacion" id="presentacion">
-                <h3>Manuel Guillen Silva</h3>
-                <p class="descripcion">Desarrollador web, FullStack y graduado en Literaturas.</p>
+      <section class="grid-container">
+        <article class="presentacion" id="presentacion">
+          <h3>Manuel Guillen Silva</h3>
 
-                <div class="lugar_cita">
-                    <p>Sevilla, Andalucía</p>
-                    <p>Sapere Aude</p>
-                </div>
-            </article>
-            <article class="biografia">
-                <h5>Biografía</h5>
-                <div class="foto">
-                    <a href="pages/biografia.html">
-                        <img src="assets/imgs/bio.jpg" alt="iop">
-                    </a>
-                </div>
-                <div class="pieFoto">
-                    <p>DAW & Literaturas Comparadas</p>
-                    <p>Buscando empleo a tope </p>
-                </div>
-            </article>
-            <article class="social">
-                <div class="intereses">
-                    <ul> <span>Intereses </span>
-                        <li>Narrativa & Diseño</li>
-                        <li>Accesibilidad web</li>
-                        <li>Ciberseguridad</li>
-                    </ul>
-                </div>
-                <div class="redes">
-                    <ul><span>Social
-                        </span>
-                        <li>Linkedin</li>
-                        <li>GoodReads</li>
-                    </ul>
-                </div>
-            </article>
-            <article class="proyectos">
-                <h5>Proyectos</h5>
-                <p>Work in Progress</p>
-                <div class="loading-dots">...</div>
-            </article>
-            <article class="libros">
-                    <h5>Libros</h5>        
-            </article>
-            <article class="final">
-                <div>
-                    <p>© 2023. Manuel Guillen silva</p>
-                </div>
+          <p class="descripcion">Desarrollador web FullStack.</p>
+          <div class="checkbox-wrapper-35">
+            <input
+              value="private"
+              name="switch"
+              id="switch"
+              type="checkbox"
+              class="switch"
+            />
+            <label for="switch">
+              <span class="switch-x-text">Modo oscuro </span>
+              <span class="switch-x-toggletext">
+                <span class="switch-x-unchecked"
+                  ><span class="switch-x-hiddenlabel">Unchecked: </span
+                  >Off</span
+                >
+                <span class="switch-x-checked"
+                  ><span class="switch-x-hiddenlabel">Checked: </span>On</span
+                >
+              </span>
+            </label>
+          </div>
+        </article>
 
-            </article>
-            <span><a href="presentacion">Back to the top </a></span>
-        </section>
+        <article class="biografia">
+          <h5>Biografía</h5>
+          <div class="foto">
+            <a href="pages/biografia.html">
+              <img src="assets/imgs/bio.jpg" alt="iop" />
+            </a>
+          </div>
+          <div class="pieFoto">
+            <p>
+              DAW & Literaturas Comparadas <br />
+              Buscando empleo
+            </p>
+          </div>
+        </article>
+
+        <article class="social">
+          <ul class="intereses">
+            <span>Intereses </span>
+            <li>Narrativa & Diseño</li>
+            <li>Accesibilidad web</li>
+            <li>Web Scraping</li>
+          </ul>
+          <ul class="redes">
+            <span>Social </span>
+            <li>
+              <a href="https://github.com/manuelgsil" target="_blank">Github</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/manuelguillensilva/"
+                target="_blank"
+                >Linkedin</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.goodreads.com/user/show/92054816-nombrefigurado"
+                target="_blank"
+                >GoodReads</a
+              >
+            </li>
+          </ul>
+        </article>
+
+        <article class="intermedio">
+          <h4>Actualmente</h4>
+          <p>Terminando DAW en OPD</p>
+          <p>
+            FPE en Administracion de Base de Datos: IFCT0310
+            <strong>(650h)</strong>
+          </p>
+        </article>
+
+        <article class="proyectos">
+          <h5>Proyectos</h5>
+          <div class="container-tool">
+            <a href="pages/proyectos.html">
+              <img src="assets/herramientas.png" alt="" srcset="" />
+            </a>
+          </div>
+        </article>
+
+        <article class="final">
+          <p>Manuel Guillén Silva.</p>
+          <span>2024</span>
+          <div class="volver">
+            <a href="#presentacion">Arriba </a>
+          </div>
+        </article>
+      </section>
     </main>
-
-    <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

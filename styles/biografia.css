@@ -2,6 +2,10 @@
 :root {
   --colorArticle: #f4f4f6;
   --colorFondo: #ffffff;
+  --colorTexto: #000000;
+  --colorCompetencias:#f0f0f0;
+  --colorhHoverCompentecias:#e0e0e0;
+  --colorTextoIndice:#666666
 }
 html {
   box-sizing: border-box;
@@ -9,7 +13,16 @@ html {
 }
 body {
   min-height: 100vh;
-  width: auto;
+  &.dark-theme {
+    --colorArticle: #0f0f0f;
+    --colorFondo: #1a1a1a;
+    --colorTexto: #ffffff;
+    --fontInter: "Inter", sans-serif;
+    --sombraBox: 0 0 0 0;
+    --colorCompetencias:#0f0f0f;
+    --colorhHoverCompentecias:#1a1a1a;
+  }
+  color: var(--colorTexto);
 }
 *,
 *::after,
@@ -28,29 +41,13 @@ a:visited {
   text-decoration: none;
 }
 header {
+  background-color: var(--colorArticle);
   line-height: 2rem;
   padding: 2% 4%;
-
-  && p {
+  & p {
+    color: var(--colorTextoIndice);
     display: inline;
   }
-  && h2 {
-    transition-duration: 0.5;
-    width: fit-content;
-
-    :hover {
-      background-color: red;
-    }
-  }
-}
-.bio {
-  background-color: var(--colorFondo);
-  display: flex;
-  flex-flow: row wrap;
-  gap: 20px;
-  justify-content: center;
-  overflow: hidden;
-  padding: 24px;
 }
 article {
   background-color: var(--colorArticle);
@@ -58,47 +55,78 @@ article {
   overflow: hidden;
   padding: 10px;
 }
+.bio {
+  background-color: var(--colorFondo);
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding: 24px;
+}
+
 .mgs {
   display: flex;
-
+  height: 500px;
   && .foto {
-    width: 30%;
-
+    width: 40%;
+    padding: 10px;
     && img {
       object-fit: cover;
-      object-position: center;
+      object-position: center center;
       width: 100%;
+      height: 100%;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+      border-radius: 10px; /* Bordes redondeados */
     }
   }
   && .comentarios {
     display: grid;
     font-size: 14px;
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+    width: 90%;
 
     && p {
-      background-color: lightgray;
-      margin-block-end: 1em;
-      margin-block-start: 1em;
-      margin-inline-end: 0px;
-      margin-inline-start: 2px;
+      line-height: 2rem;
+      margin-block-start: 1rem;
+      margin-inline-end: 1rem;
+      margin-inline-start: 1rem;
     }
   }
 }
-.habilidades {
+
+.competencias {
+  flex: 0;
   line-height: 2rem;
   min-width: 40%;
+  & h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  & li {
+    margin-bottom: 0.5rem;
+    background-color: var(--colorCompetencias);
+    &:hover {
+      background-color: var(--colorhHoverCompentecias);
+    }
+  }
 }
+
 .objetivo {
   flex: 1;
   line-height: 2rem;
-  min-width: 50%;
+  min-width: 30%;
+  & p {
+    margin-block-start: 1rem;
+    margin-inline-end: 1rem;
+  }
 }
 .stack {
-  min-width: 300px; /* Tendria q modificar este tamaño */
-  max-width: 400px;
+  min-width: 350px; /* Tendria q modificar este tamaño */
+  max-width: 425px;
   display: flex;
   flex-direction: column;
+  justify-self: center;
 }
 .scroller {
   width: 100%;
@@ -126,27 +154,49 @@ article {
 .scroller[data-direction="right"] {
   --_animation-direction: reverse;
 }
+.scroller[data-animated="true"] .scroller__inner:hover {
+  flex-wrap: nowrap;
 
+  animation-play-state: paused;
+}
 @keyframes scroll {
   to {
     transform: translate(calc(-50% - 0.5rem));
   }
 }
 .intereses {
+  flex: 1;
   min-width: 33%;
-  white-space-collapse: preserve-breaks;
-  width: fit-content;
+  line-height: 2rem;
+
+  & #lista-intereses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem 1.5rem;
+    padding-top: 2rem;
+  }
+
+  & .hashtag {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--colorCompetencias);
+    color: var(--colorTexto);
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: var(--colorhHoverCompentecias);
+    }
+  }
 }
 .contacto {
   line-height: 2rem;
-
+  min-width: 33%;
   p {
     width: fit-content;
   }
   div {
     display: flex;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 1rem;
 
     picture {
       display: block;
@@ -159,6 +209,14 @@ article {
     }
   }
 }
+
+.volver {
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  text-shadow: 0px 1px 2px gray;
+}
 @media (max-width: 809px) {
   .bio {
     display: grid;
@@ -169,11 +227,9 @@ article {
   }
   .mgs {
     display: grid;
-
-    /* Lo tengo que machacar con el de arriba */
+    height: 100%;
     && .foto {
-      min-width: 100%;
-
+      width: 100%;
       && img {
         object-fit: cover;
         object-position: center;
@@ -186,12 +242,15 @@ article {
       width: 100%;
     }
   }
-  .stack {
-    width: 100%;
-    
-  }
 
-  /* TEngo que poner algo del stack en pantallas medianas */
-}
-@media (min-width: 810px) and (max-width: 1279px) {
+  .contacto {
+    & p {
+      justify-self: center;
+      font-size: 20px;
+    }
+  }
+  #lista-intereses {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
 }

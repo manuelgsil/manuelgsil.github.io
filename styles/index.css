@@ -1,21 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap");
-:root {
-  --colorArticle: #f4f4f6;
-  --colorFondo: #ffffff;
+@media (prefers-color-scheme: light) {
+  :root {
+    --colorArticle: #f0f0f0;
+    --colorFondo: #fbfbfe;
+    --colorTexto: #000000;
+    --fontInter: "Inter", sans-serif;
+    --sombraBox: 5px 5px 20px gray;
+    --filtroHover: invert(50%);
+    --filtro: invert(0%);
+  }
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colorArticle: #0f0f0f;
+    --colorFondo: #1a1a1a;
+    --colorTexto: #ffffff;
+    --fontInter: "Inter", sans-serif;
+    --sombraBox: 0 0 0 0;
+    --filtroHover: invert(50%);
+    --filtro: invert(100%);
+  }
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 body {
-  background-color: #ffffff;
-  height: 100dvh;
+  transition: all ease 1s;
+  background-color: var(--colorFondo);
+  color: var(--colorTexto);
+  height: 100%;
+
+  &.dark-theme {
+    --colorArticle: #0f0f0f;
+    --colorFondo: #1a1a1a;
+    --colorTexto: #ffffff;
+    --fontInter: "Inter", sans-serif;
+    --sombraBox: 0 0 0 0;
+    & .container-tool {
+      --filtro: invert(100%);
+    }
+  }
 }
 *,
 *::after,
 *::before {
   box-sizing: inherit;
-  font-family: "Inter", sans-serif;
+  font-family: var(--fontInter);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -26,250 +58,302 @@ a:link,
 a:visited {
   color: inherit;
   text-decoration: none;
-
-  /* Hereda el color del elemento padre */
-  /* Opcional: quitar el subrayado */
 }
 
-.flex_container {
-  background-color: var(--colorFondo);
-  display: flex;
-  flex-flow: row wrap;
-  gap: 8px;
-  justify-content: center;
-  overflow: hidden;
-  padding: 24px;
-}
-article {
+/* Principal */
+.grid-container {
   display: grid;
-  flex-basis: 50dvh;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 2fr);
-  max-height: 70dvh;
-  min-height: 66dvh;
-  min-width: 33%;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-rows: repeat(2, minmax(500px, 1fr));
+  min-height: 100dvh;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+/* estilos generales */
+article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  padding: 0.2rem;
+  min-height: 500px;
+}
+h5 {
+  font-size: 20px;
+  font-weight: 500;
+  align-self: flex-end;
+  padding: 1rem;
+}
+h3 {
+  font-size: 26px;
+}
+/* Estilos generales fin */
 
-  /*  */
-}
-.presentacion {
-  && h3 {
-    font-size: 26px;
-    grid-column: 1 / span 3;
-  }
-  .descripcion {
-    grid-column: 1 / span 3;
-  }
-  && .lugar_cita {
-    align-self: self-end;
-    grid-column: 1 / span 2;
-    grid-row: 4;
-  }
-}
 .biografia {
   background-color: var(--colorArticle);
-  transition-duration: 0.5s;
-
+  transition: all 1s ease;
+  color: var(--colorTexto--Article);
   &:hover {
-    box-shadow: 5px 5px 20px gray;
+    box-shadow: var(--sombraBox);
   }
-  && h5 {
-    font-size: 20px;
-    font-weight: 500;
-    grid-column: 4;
-    justify-self: right;
-  }
-  && .foto {
-    grid-column: 1 / span 4;
-    grid-row: 2 / span 2;
-    width: 100%;
-    height: 100%;
+  & .foto {
+    align-self: center;
+    min-width: 40%;
+    max-width: 45%;
     & img {
-      object-fit: scale-down;
-      transition-duration: 0.5s;
-      width: 100%;
-      height: 100%;
+      border-radius: 8px;
 
+      width: 100%;
+      object-fit: scale-down;
+      object-position: center center;
+      transition-duration: 0.5s;
       &:hover {
         transform: rotate(10deg);
       }
     }
   }
 
-  && .pieFoto {
-    align-self: self-end;
-    grid-column: 1 / span 3;
-    grid-row: 4;
+  .pieFoto {
+    justify-self: flex-end;
+    padding: 0.2rem;
   }
 }
-.social {
-  && .intereses {
-    grid-column: 3 / span 4;
-    grid-row: 1 / span 2;
-  }
-  && .redes {
-    grid-column: 3 / span 4;
-    grid-row: 4;
-  }
-  && span {
-    display: block;
+.intereses,
+.redes {
+  align-self: flex-end;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1rem;
+  & span {
+    align-self: center;
     font-weight: bold;
     letter-spacing: 0.1em;
     line-height: 3em;
+    font-size: 20px;
   }
-  && li {
+
+  & li {
     line-height: 1.5em;
+    width: fit-content;
   }
 }
-
+.redes li {
+  cursor: pointer;
+  &:hover {
+    color: gray;
+  }
+}
 .proyectos {
+  transition: all ease 1s;
   background-color: var(--colorArticle);
-  position: relative;
-  transition: background-color 0.3s ease;
-
-  /* Agregamos una transición suave al cambio de color */
-  &:hover {
-    .loading-dots {
-      animation: pulse 1.5s infinite;
-      opacity: 1;
-
-      /* Aplicamos la animación al pasar el ratón */
-    }
-  }
-  && h5 {
-    font-size: 20px;
-    font-weight: 500;
-    grid-column: 5;
-    text-align: end;
-  }
-  p {
+  & .container-tool {
+    width: 40%;
     align-self: center;
-    grid-column: 2 / span 3;
-    grid-row: 2 / span 2;
-    justify-self: center;
-  }
-  .loading-dots {
-    font-size: 50px;
-    opacity: 0;
-    position: absolute;
-    right: 45%;
-    scale: 2;
-    top: 50%;
-    transition: opacity 600ms ease;
-
-    /* Tamaño de los puntos */
-  }
-}
-/* Estilo para el bloque de libros */
-.libros {
-  background-color: var(--colorArticle);
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 30px;
-
-  &:hover {
-    h5 {
-      color: red;
-
-      /* Color al hacer hover */
+    margin-bottom: 8rem;
+    transition: all 1s ease;
+    filter: var(--filtro);
+    &:hover {
+      cursor: pointer;
+      filter: var(--filtroHover);
+      transition-duration: 0.5s;
     }
-  }
-  && h5 {
-    cursor: alias;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: end;
-    transition: color 0.3s ease;
-
-    /* Efecto de transición al cambiar el color */
-  }
-  && .carrusel {
-    align-self: center;
-    height: 80%;
-    overflow: hidden;
-    position: relative;
-    width: 80%;
-
-    &:before,
-    &:after {
-      content: "";
-      height: 10%;
-      position: absolute;
+    & img {
       width: 100%;
-      z-index: 1;
-    }
-    &:after {
-      background: linear-gradient(to bottom, #f4f4f6, transparent);
-      top: 0px;
-    }
-    &:before {
-      background: linear-gradient(to top, #f4f4f6, transparent);
-      bottom: 0;
-    }
-    && iframe {
-      height: calc(100% + 40px);
-      overflow: hidden;
-      scroll-behavior: smooth;
-      transition: transform 1s ease-in-out;
-      width: calc(100% + 40px);
-
-      /*  Asi quitamos la barra de navegacion */
     }
   }
+  &:hover {
+    box-shadow: var(--sombraBox);
+  }
 }
-/* Estilos para el bloque final */
-
 .final {
+  position: relative;
   align-items: center;
-  display: flex;
-  flex-flow: row nowrap;
   justify-content: center;
 
-  && div {
-    display: inherit;
-    height: 32%;
-    width: 50%;
+  & .volver {
+    position: absolute;
+    bottom: 0;
 
-    && p {
-      align-self: center;
-    }
   }
 }
 
-span {
-  font-size: 20px;
-  height: 10%;
-  order: 6;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  width: 100%;
+.intermedio {
+  padding: 0.2rem;
+  justify-content: space-evenly;
 }
 
-@media screen and (min-width: 340px) and (max-width: 1300px) {
-  .social {
-    order: 3;
-    visibility: hidden;
+@media (min-width: 700px) and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 1rem;
+  }
 
-    /* Intentar cambiar el orden */
+  article {
+    min-width: 33vh;
+  }
+  .intermedio {
+   display: none
   }
   .proyectos {
-    order: 2;
-
-    /* Cambiar el orden para que ocupe el lugar de .social */
-  }
-  .leyendo {
     order: 4;
-
-    /* Asegura que .leyendo aparezca después de .proyectos */
   }
   .final {
     order: 5;
-
-    /* Asegura que .final aparezca después de .leyendo */
+    grid-column: 1 /span 2;
+    text-align: center;
   }
-  .volver {
-    order: 6;
+  .biografia{
+    order: 3;
+  }
+  .intereses{
+    order: 1;
+  }
+  
+}
 
-    /* Asegura que .volver aparezca al final */
+@media (max-width: 699px) {
+  .grid-container {
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
+    justify-items: center;
+  }
+  article {
+    max-width: 500px;
+  }
+
+  .social {
+    display: none;
+  }
+  .intermedio{
+    display: none;
   }
 }
+
+/* Switch */
+.checkbox-wrapper-35 .switch {
+  display: none;
+}
+.checkbox-wrapper-35 {
+  align-self: flex-end;
+}
+
+.checkbox-wrapper-35 .switch + label {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #78768d;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-wrapper-35 .switch + label::before,
+.checkbox-wrapper-35 .switch + label::after {
+  content: "";
+  display: block;
+}
+
+.checkbox-wrapper-35 .switch + label::before {
+  background-color: #05012c;
+  border-radius: 500px;
+  height: 15px;
+  margin-right: 8px;
+  -webkit-transition: background-color 0.125s ease-out;
+  transition: background-color 0.125s ease-out;
+  width: 25px;
+}
+
+.checkbox-wrapper-35 .switch + label::after {
+  background-color: #fff;
+  border-radius: 13px;
+  box-shadow: 0 3px 1px 0 rgba(37, 34, 71, 0.05),
+    0 2px 2px 0 rgba(37, 34, 71, 0.1), 0 3px 3px 0 rgba(37, 34, 71, 0.05);
+  height: 13px;
+  left: 1px;
+  position: absolute;
+  top: 1px;
+  -webkit-transition: -webkit-transform 0.125s ease-out;
+  transition: -webkit-transform 0.125s ease-out;
+  transition: transform 0.125s ease-out;
+  transition: transform 0.125s ease-out, -webkit-transform 0.125s ease-out;
+  width: 13px;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-text {
+  display: block;
+  margin-right: 0.3em;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-toggletext {
+  display: block;
+  font-weight: bold;
+  height: 15px;
+  overflow: hidden;
+  position: relative;
+  width: 25px;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-unchecked,
+.checkbox-wrapper-35 .switch + label .switch-x-checked {
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;
+  transition: opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;
+  transition: transform 0.125s ease-out, opacity 0.125s ease-out;
+  transition: transform 0.125s ease-out, opacity 0.125s ease-out,
+    -webkit-transform 0.125s ease-out;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-unchecked {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-checked {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-hiddenlabel {
+  position: absolute;
+  visibility: hidden;
+}
+
+.checkbox-wrapper-35 .switch:checked + label::before {
+  background-color: #ffb500;
+}
+
+.checkbox-wrapper-35 .switch:checked + label::after {
+  -webkit-transform: translate3d(10px, 0, 0);
+  transform: translate3d(10px, 0, 0);
+}
+
+.checkbox-wrapper-35 .switch:checked + label .switch-x-unchecked {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+.checkbox-wrapper-35 .switch:checked + label .switch-x-checked {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+/* fin switch */
