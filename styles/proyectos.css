@@ -40,6 +40,8 @@ a:visited {
   text-decoration: none;
 }
 header {
+  background-color: var(--colorArticle);
+
   line-height: 2rem;
   padding: 2% 4%;
   & p {
@@ -80,6 +82,7 @@ article {
 }
 
 h1 {
+  
   padding: 0.5rem;
 }
 
