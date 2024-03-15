@@ -1,102 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV</title>
+    <!-- FONTS -->
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV</title>
-  <!-- FONTS -->
+    <!-- MEDIA -->
+    <link rel="stylesheet" href="styles/index.css" />
+    <script defer src="javascript/index.js"></script>
+  </head>
 
-  <!-- MEDIA -->
-  <link rel="stylesheet" href="styles/index.css" />
-  <script defer src="javascript/index.js"></script>
-</head>
+  <body>
+    <div class="checkbox-wrapper-35">
+      <input
+        value="private"
+        name="switch"
+        id="switch"
+        type="checkbox"
+        class="switch"
+      />
+      <label for="switch">
+        <span class="switch-x-text">Modo oscuro </span>
+        <span class="switch-x-toggletext">
+          <span class="switch-x-unchecked"
+            ><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span
+          >
+          <span class="switch-x-checked"
+            ><span class="switch-x-hiddenlabel">Checked: </span>On</span
+          >
+        </span>
+      </label>
+    </div>
+    <main>
+      <section class="grid-container">
+        <article class="presentacion" id="presentacion">
+          <h1 class="nombre">Manuel Guillén Silva</h1>
+          <p class="descripcion">Desarrollador web FullStack.</p>
+          <h2>Intereses</h2>
+          <ul>
+            <li>
+              <span
+                ><img src="assets/toolIcons/accsebilidad.png" alt="" /> </span
+              >Narrativa & Diseño
+            </li>
+            <li>
+              <span><img src="assets/toolIcons/design.png" alt="" /> </span
+              >Accesibilidad web
+            </li>
+            <li>
+              <span><img src="assets/toolIcons/scrapping.png" alt="" /> </span
+              >Web Scraping
+            </li>
+          </ul>
+        </article>
 
-<body>
-  <div class="checkbox-wrapper-35">
-    <input value="private" name="switch" id="switch" type="checkbox" class="switch" />
-    <label for="switch">
-      <span class="switch-x-text">Modo oscuro </span>
-      <span class="switch-x-toggletext">
-        <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
-        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
-      </span>
-    </label>
-  </div>
-  <main>
-    <section class="grid-container">
+        <article class="biografia">
+          <h2>Biografía</h2>
+          <div class="foto">
+            <a href="pages/biografia.html">
+              <img src="assets/imgs/bio.jpg" alt="iop" />
+            </a>
+          </div>
+          <div class="pieFoto">
+            <p>
+              DAW & Literaturas Comparadas <br />
+              Buscando empleo
+            </p>
+          </div>
+        </article>
 
-      <article class="presentacion" id="presentacion">
-        <h1>Manuel Guillen Silva</h1>
+        <article class="social">
+          <h1>Contacto</h1>
+          <ul class="contacto">
+            <li>
+              <a href="https://github.com/manuelgsil" target="_blank">Github</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/manuelguillensilva/"
+                target="_blank"
+                >Linkedin</a
+              >
+            </li>
+            <li>
+              <a href="mailto:manuelguillen93@gmail.com" target="_blank">
+                Mail</a
+              >
+            </li>
+          </ul>
+          <div class="goodreads">
+            <h2>¿Qué leo?</h2>
+            <div class="container-img-goodreads">
+              <a
+                href="https://www.goodreads.com/user/show/92054816-nombrefigurado"
+                target="_blank"
+                ><img src="assets/goodreads_logo 1.png" alt=""
+              /></a>
+            </div>
+          </div>
+        </article>
 
-        <p class="descripcion">Desarrollador web FullStack.</p>
-
-      </article>
-
-      <article class="biografia">
-        <h2>Biografía</h2>
-        <div class="foto">
-          <a href="pages/biografia.html">
-            <img src="assets/imgs/bio.jpg" alt="iop" />
-          </a>
-        </div>
-        <div class="pieFoto">
+        <article class="actualmente">
+          <h2>Actualmente</h2>
+          <p>Terminando DAW en OPD</p>
           <p>
-            DAW & Literaturas Comparadas <br />
-            Buscando empleo
+            FPE en Administracion de Base de Datos: <br />
+            IFCT0310
+            <strong>(650h)</strong>
           </p>
-        </div>
-      </article>
 
-      <article class="social">
-        <ul class="intereses">
-          <span>Intereses </span>
-          <li>Narrativa & Diseño</li>
-          <li>Accesibilidad web</li>
-          <li>Web Scraping</li>
-        </ul>
-        <ul class="redes">
-          <span>Social </span>
-          <li>
-            <a href="https://github.com/manuelgsil" target="_blank">Github</a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/manuelguillensilva/" target="_blank">Linkedin</a>
-          </li>
-          <li>
-            <a href="https://www.goodreads.com/user/show/92054816-nombrefigurado" target="_blank">GoodReads</a>
-          </li>
-        </ul>
-      </article>
+          <p>Lenguajes principales:</p>
+          <ul class="lenguajes">
+            <li><img src="assets/indexIcons/javaI.png" alt="" /></li>
+            <li><img src="assets/indexIcons/jsI.png" alt="" /></li>
+            <li><img src="assets/indexIcons/phpI.png" alt="" /></li>
+            
+          </ul>
+        </article>
 
-      <article class="intermedio">
-        <h1>Actualmente</h1>
-        <p>Terminando DAW en OPD</p>
-        <p>
-          FPE en Administracion de Base de Datos: IFCT0310
-          <strong>(650h)</strong>
-        </p>
-      </article>
+        <article class="proyectos">
+          <h2>Proyectos</h2>
+          <div class="container-tool">
+            <a href="pages/proyectos.html">
+              <img src="assets/herramientas.png" alt="" srcset="" />
+            </a>
+          </div>
+        </article>
 
-      <article class="proyectos">
-        <h2>Proyectos</h2>
-        <div class="container-tool">
-          <a href="pages/proyectos.html">
-            <img src="assets/herramientas.png" alt="" srcset="" />
-          </a>
-        </div>
-      </article>
-
-      <article class="final">
-        <p>Manuel Guillén Silva.</p>
-        <span>2024</span>
+        <article class="final">
+          <p>Manuel <br/ class="espacio"> Guillén Silva</p>
+          <span>2024</span>
+          
+        </article>
         <div class="volver">
           <a href="#presentacion">Arriba </a>
         </div>
-      </article>
-
-    </section>
-  </main>
-</body>
-
+      </section>
+    </main>
+  </body>
 </html>

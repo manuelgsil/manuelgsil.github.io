@@ -46,3 +46,19 @@ botonSwitch.addEventListener("click", () => {
     localStorage.removeItem("tema"); // Eliminar tema guardado del localStorage
   }
 });
+const scroller = document.querySelectorAll(".scroller");
+if (!window.matchMedia("(pefers-reduced-motion:reduce)").matches);
+addAnimation();
+
+function addAnimation() {
+  scroller.forEach((scroller) => {
+    scroller.setAttribute("data-animated", true);
+    const scrollerIner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerIner.children);
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerIner.appendChild(duplicatedItem);
+    });
+  });
+}
