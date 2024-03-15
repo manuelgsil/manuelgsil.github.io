@@ -77,9 +77,9 @@ article {
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  min-height: 438px;
+  min-height: 27rem;
   padding: 1rem;
-  max-width: 469px;
+  max-width: 29rem;
   width: 100%;
 }
 
@@ -98,7 +98,7 @@ h3 {
 
   & .nombre {
     font-size: 36px;
-    font-weight: 700;
+    font-weight: bold;
   }
   & h2 {
     margin: 1rem 0;
@@ -254,12 +254,13 @@ h3 {
   justify-content: center;
   font-size: 30px;
   font-weight: bold;
+  text-align: center;
 }
 
 .volver {
   display: none;
   text-align: center;
-  width: 100%;
+
 }
 .espacio{
   display: none;
@@ -270,13 +271,9 @@ h3 {
     grid-template-columns: repeat(2, minmax(300px, 1fr));
     gap: 1rem;
   }
-  article {
-    min-width: 33vh;
-  }
-  .volver{
-    display: block;
-    text-wrap: wrap;
-  }
+
+
+
 
 }
 
@@ -287,15 +284,13 @@ h3 {
   }
  
   article {
-    max-width: 347px;
+    max-width: 22rem;
   }
   .volver{
     display: block;
     text-align: center;
   }
-  .final{
-    text-align: center;
-  }
+
   .espacio{
     display: block;
   }
