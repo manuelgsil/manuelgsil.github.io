@@ -19,3 +19,6 @@ npm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Cloudflare Worker local cache
+worker/.wrangler/

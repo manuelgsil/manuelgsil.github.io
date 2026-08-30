@@ -1,0 +1,10 @@
+name = "manuelgsil-guestbook"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[[kv_namespaces]]
+binding = "GUESTBOOK"
+id = "a54dbfe59596484aa945f50bb5527529"
+
+[observability]
+enabled = true

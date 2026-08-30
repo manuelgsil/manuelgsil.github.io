@@ -1,30 +1,18 @@
 ---
-const firmasIniciales = [
-  { nombre: "webmaster_1997", fecha: "12 ago", mensaje: "Buena web, se ve bien en 800x600." },
-  { nombre: "anon@modem", fecha: "14 ago", mensaje: "¿Alguien más sigue tocando PHP 5.5? Ánimo con eso." },
-  { nombre: "tu futuro jefe", fecha: "ayer", mensaje: "Me interesa. Te escribo." },
-];
 ---
 
 <section>
   <h2>Libro de visitas</h2>
   <div class="card">
-    <p class="hint">Firma si has llegado hasta aquí. No se guarda en ningún sitio, es puro 1998.</p>
+    <p class="hint">Firma si has llegado hasta aquí — se guarda de verdad, pero solo 1 día. Aprovecha.</p>
+    <p id="gb-error" class="error" hidden></p>
     <div id="firmas" class="firmas">
-      {
-        firmasIniciales.map((v) => (
-          <div class="firma">
-            <div class="autor">
-              {v.nombre} <span class="fecha">· {v.fecha}</span>
-            </div>
-            <div class="mensaje">{v.mensaje}</div>
-          </div>
-        ))
-      }
+      <p class="cargando">Cargando firmas…</p>
     </div>
     <form id="guestbook-form" class="form">
-      <input id="gb-nombre" name="nombre" placeholder="Tu nombre" />
-      <input id="gb-mensaje" name="mensaje" placeholder="Tu mensaje" required />
+      <input id="gb-nombre" name="nombre" placeholder="Tu nombre" maxlength="40" />
+      <input id="gb-mensaje" name="mensaje" placeholder="Tu mensaje" maxlength="200" required />
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEiMpHIiP4Zx3cMv"></div>
       <button type="submit">Firmar</button>
     </form>
   </div>
@@ -32,7 +20,7 @@ const firmasIniciales = [
 
 <template id="firma-template">
   <div class="firma">
-    <div class="autor"><span data-field="nombre"></span> <span class="fecha">· justo ahora</span></div>
+    <div class="autor"><span data-field="nombre"></span> <span class="fecha" data-field="fecha"></span></div>
     <div class="mensaje" data-field="mensaje"></div>
   </div>
 </template>
@@ -56,6 +44,19 @@ const firmasIniciales = [
     margin: 0 0 16px;
     font-size: 14px;
     font-style: italic;
+  }
+
+  .error {
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #a8271a;
+  }
+
+  .cargando {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.6;
   }
 
   .firmas {
@@ -106,6 +107,10 @@ const firmasIniciales = [
     flex: 2 1 240px;
   }
 
+  .cf-turnstile {
+    flex: 1 0 100%;
+  }
+
   button {
     font-family: "Space Mono", monospace;
     font-size: 14px;
@@ -123,28 +128,100 @@ const firmasIniciales = [
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 var(--ac);
   }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 </style>
 
 <script>
+  const API = "https://manuelgsil-guestbook.guillenmanuel993.workers.dev/firmas";
+
   const form = document.getElementById("guestbook-form") as HTMLFormElement | null;
-  const firmas = document.getElementById("firmas");
+  const firmasEl = document.getElementById("firmas");
+  const errorEl = document.getElementById("gb-error");
   const template = document.getElementById("firma-template") as HTMLTemplateElement | null;
 
-  form?.addEventListener("submit", (e) => {
+  function renderFirma(v: { nombre: string; mensaje: string; fecha: string }) {
+    if (!template) return null;
+    const node = template.content.cloneNode(true) as DocumentFragment;
+    node.querySelector<HTMLElement>('[data-field="nombre"]')!.textContent = v.nombre;
+    node.querySelector<HTMLElement>('[data-field="fecha"]')!.textContent = `· ${v.fecha}`;
+    node.querySelector<HTMLElement>('[data-field="mensaje"]')!.textContent = v.mensaje;
+    return node;
+  }
+
+  function mostrarError(msg: string) {
+    if (!errorEl) return;
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+  }
+
+  async function cargarFirmas() {
+    if (!firmasEl) return;
+    try {
+      const res = await fetch(API);
+      const data = await res.json();
+      firmasEl.innerHTML = "";
+      if (!data.firmas || data.firmas.length === 0) {
+        firmasEl.innerHTML = '<p class="cargando">Todavía no firmó nadie. Sé el primero.</p>';
+        return;
+      }
+      for (const firma of data.firmas) {
+        const node = renderFirma(firma);
+        if (node) firmasEl.appendChild(node);
+      }
+    } catch {
+      firmasEl.innerHTML = '<p class="cargando">No se pudieron cargar las firmas ahora mismo.</p>';
+    }
+  }
+
+  cargarFirmas();
+
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (errorEl) errorEl.hidden = true;
+
     const nombreInput = document.getElementById("gb-nombre") as HTMLInputElement;
     const mensajeInput = document.getElementById("gb-mensaje") as HTMLInputElement;
+    const button = form.querySelector("button") as HTMLButtonElement;
 
     const mensaje = mensajeInput.value.trim();
-    if (!mensaje || !firmas || !template) return;
+    if (!mensaje) return;
 
-    const nombre = nombreInput.value.trim() || "anónimo";
-    const node = template.content.cloneNode(true) as DocumentFragment;
-    node.querySelector<HTMLElement>('[data-field="nombre"]')!.textContent = nombre;
-    node.querySelector<HTMLElement>('[data-field="mensaje"]')!.textContent = mensaje;
-    firmas.appendChild(node);
+    const turnstileInput = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]');
+    const turnstileToken = turnstileInput?.value;
+    if (!turnstileToken) {
+      mostrarError("Esperá a que cargue la verificación anti-bot y probá de nuevo.");
+      return;
+    }
 
-    nombreInput.value = "";
-    mensajeInput.value = "";
+    button.disabled = true;
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre: nombreInput.value.trim(), mensaje, turnstileToken }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        mostrarError(data?.error || "No se pudo guardar la firma. Probá de nuevo.");
+        return;
+      }
+
+      const firma = await res.json();
+      const node = renderFirma(firma);
+      if (node && firmasEl) firmasEl.prepend(node);
+
+      nombreInput.value = "";
+      mensajeInput.value = "";
+    } catch {
+      mostrarError("No se pudo guardar la firma. Probá de nuevo.");
+    } finally {
+      button.disabled = false;
+      (window as any).turnstile?.reset();
+    }
   });
 </script>
