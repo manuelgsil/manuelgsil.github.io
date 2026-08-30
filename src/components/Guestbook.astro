@@ -12,7 +12,7 @@
     <form id="guestbook-form" class="form">
       <input id="gb-nombre" name="nombre" placeholder="Tu nombre" maxlength="40" />
       <input id="gb-mensaje" name="mensaje" placeholder="Tu mensaje" maxlength="200" required />
-      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEiMpHIiP4Zx3cMv"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEiMpHIiP4Zx3cMv" data-size="flexible"></div>
       <button type="submit">Firmar</button>
     </form>
   </div>
@@ -109,6 +109,7 @@
 
   .cf-turnstile {
     flex: 1 0 100%;
+    width: 100%;
   }
 
   button {
