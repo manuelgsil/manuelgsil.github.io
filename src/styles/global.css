@@ -19,6 +19,7 @@ body {
   background: var(--ac);
   font-family: "Space Mono", monospace;
   color: var(--ink);
+  overflow-wrap: break-word;
 }
 
 a {
