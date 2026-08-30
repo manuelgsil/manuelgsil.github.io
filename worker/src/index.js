@@ -116,6 +116,13 @@ async function notificar(env, nombre, mensaje) {
   }
 }
 
+// Firma fija de ambiente, no vive en KV — no se borra a las 24h como las reales.
+const FIRMA_SEED = {
+  nombre: "anon@modem",
+  mensaje: "¿Alguien más sigue tocando PHP 5.5? Ánimo con eso.",
+  fecha: "hace tiempo",
+};
+
 async function listarFirmas(env) {
   const listado = await env.GUESTBOOK.list({ prefix: "firma:", limit: MAX_ENTRIES_RETURNED });
   const valores = await Promise.all(
@@ -124,10 +131,11 @@ async function listarFirmas(env) {
       return raw ? JSON.parse(raw) : null;
     })
   );
-  return valores
+  const reales = valores
     .filter(Boolean)
     .sort((a, b) => b.ts - a.ts)
     .map((v) => ({ nombre: v.nombre, mensaje: v.mensaje, fecha: fechaRelativa(v.ts) }));
+  return [...reales, FIRMA_SEED];
 }
 
 export default {

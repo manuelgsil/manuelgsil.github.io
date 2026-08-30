@@ -193,7 +193,7 @@
     const turnstileInput = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]');
     const turnstileToken = turnstileInput?.value;
     if (!turnstileToken) {
-      mostrarError("Esperá a que cargue la verificación anti-bot y probá de nuevo.");
+      mostrarError("Espera a que cargue la verificación anti-bot y prueba de nuevo.");
       return;
     }
 
@@ -207,7 +207,7 @@
 
       if (!res.ok) {
         const data = await res.json().catch(() => null);
-        mostrarError(data?.error || "No se pudo guardar la firma. Probá de nuevo.");
+        mostrarError(data?.error || "No se pudo guardar la firma. Prueba de nuevo.");
         return;
       }
 
@@ -218,7 +218,7 @@
       nombreInput.value = "";
       mensajeInput.value = "";
     } catch {
-      mostrarError("No se pudo guardar la firma. Probá de nuevo.");
+      mostrarError("No se pudo guardar la firma. Prueba de nuevo.");
     } finally {
       button.disabled = false;
       (window as any).turnstile?.reset();
