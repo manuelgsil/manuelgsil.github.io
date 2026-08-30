@@ -1,0 +1,26 @@
+---
+const texto =
+  "★ ESTA PÁGINA LLEVA EN OBRAS DESDE 2022 ★ HOY TOCA PHP 5.5, MAÑANA YA VEREMOS ★ SÍ, TAMBIÉN SÉ SQL ★ SE VE BIEN EN 800x600 ★ FIRMA EL LIBRO DE VISITAS, ANDA ★";
+---
+
+<div class="marquee">
+  <div class="track">{texto}</div>
+</div>
+
+<style>
+  .marquee {
+    border-bottom: 4px solid var(--ink);
+    background: var(--ink);
+    color: var(--ac);
+    overflow: hidden;
+    padding: 7px 0;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .track {
+    display: inline-block;
+    animation: desliza 24s linear infinite;
+  }
+</style>

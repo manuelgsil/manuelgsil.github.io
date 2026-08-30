@@ -1,0 +1,39 @@
+---
+---
+
+<div class="footer">
+  <span class="visitas">VISITAS: <span id="visitas">1.093</span></span>
+</div>
+
+<style>
+  .footer {
+    border-top: 4px solid var(--ink);
+    background: var(--panel);
+    padding: 18px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 13px;
+  }
+
+  .visitas {
+    font-weight: 700;
+    background: var(--ink);
+    color: var(--ac);
+    padding: 6px 12px;
+    letter-spacing: 2px;
+  }
+</style>
+
+<script>
+  const el = document.getElementById("visitas");
+  if (el) {
+    let visitas = 1093;
+    setInterval(() => {
+      visitas += 1;
+      el.textContent = visitas.toLocaleString("es-ES");
+    }, 4200);
+  }
+</script>

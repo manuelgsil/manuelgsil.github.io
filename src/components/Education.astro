@@ -1,0 +1,84 @@
+---
+const formacion = [
+  { titulo: "F.P.G.S. Desarrollo de Aplicaciones Web", centro: "IES Punta del Verde", fechas: "2022 – 2025" },
+  { titulo: "IFCT0310 Administración de Bases de Datos (650 h)", centro: "Core Networks, Sevilla", fechas: "2022" },
+  { titulo: "Grado en Literaturas Comparadas", centro: "Universidad de Granada", fechas: "2013 – 2017" },
+];
+---
+
+<section>
+  <h2>Formación</h2>
+  <div class="list">
+    {
+      formacion.map((f) => (
+        <div class="item">
+          <div>
+            <div class="titulo">{f.titulo}</div>
+            <div class="centro">{f.centro}</div>
+          </div>
+          <span class="badge">{f.fechas}</span>
+        </div>
+      ))
+    }
+  </div>
+  <div class="idiomas">
+    <span class="badge badge-dark">Español nativo</span>
+    <span class="badge badge-dark">Inglés B2</span>
+  </div>
+</section>
+
+<style>
+  h2 {
+    margin: 0 0 14px;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    justify-content: space-between;
+    align-items: baseline;
+    border: 3px solid var(--ink);
+    background: #fff;
+    padding: 16px 20px;
+  }
+
+  .titulo {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .centro {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .badge {
+    font-size: 13px;
+    font-weight: 700;
+    border: 2px solid var(--ink);
+    padding: 3px 12px;
+    white-space: nowrap;
+  }
+
+  .idiomas {
+    margin: 14px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .badge-dark {
+    background: var(--ink);
+    color: var(--ac);
+    border-color: var(--ink);
+  }
+</style>
