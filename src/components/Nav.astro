@@ -1,0 +1,114 @@
+---
+import { PROFILE } from "../data/portfolio";
+
+const links = [
+  { href: "#artefactos", label: "Artefactos" },
+  { href: "#oficio", label: "Oficio" },
+  { href: "#trayectoria", label: "Trayectoria" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<header class="nav-wrap">
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio" aria-label={PROFILE.name}>
+      <span class="brand-glyph" aria-hidden="true"></span>
+      <span class="brand-code">{PROFILE.monogram}</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <a class="nav-gh" href={PROFILE.github} target="_blank" rel="noopener">GITHUB ↗</a>
+  </div>
+</header>
+
+<style>
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(4, 7, 20, 0.78);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .nav-inner {
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+  }
+
+  .brand-glyph {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--gold);
+    transform: rotate(45deg);
+    position: relative;
+  }
+
+  .brand-glyph::after {
+    content: "";
+    position: absolute;
+    inset: 2.5px;
+    background: var(--cyan);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+
+  .nav-gh {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    border: 1px solid rgba(230, 184, 92, 0.42);
+    background: var(--gold-soft);
+    padding: 6px 12px;
+    border-radius: var(--radius-xs);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-gh:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  @media (max-width: 720px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,208 @@
+---
+import { PROFILE } from "../data/portfolio";
+---
+
+<section id="inicio" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="coord-row">
+        <span class="coord-dot" aria-hidden="true"></span>
+        <span>{PROFILE.coordinates}</span>
+      </div>
+
+      <h1>
+        <span class="name-line">{PROFILE.name}</span>
+        <span class="myth-line">{PROFILE.tagline}</span>
+      </h1>
+
+      <p class="manifesto">
+        {PROFILE.manifestoLead}{" "}
+        <em>{PROFILE.manifestoItalic}</em>
+      </p>
+
+      <p class="bio">{PROFILE.bio}</p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#artefactos">Explorar proyectos</a>
+        <a class="btn btn-ghost" href={PROFILE.github} target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href={PROFILE.cvUrl} download>CV</a>
+      </div>
+    </div>
+
+    <!-- Sacred Orbital Astrolabe -->
+    <div class="astrolabe-wrap" aria-hidden="true">
+      <svg viewBox="0 0 420 420" fill="none" class="astrolabe-svg">
+        <g class="ring-outer">
+          <circle cx="210" cy="210" r="196" stroke="#24335C" stroke-width="1" stroke-dasharray="3 7" />
+          <circle cx="210" cy="14" r="3" fill="#E6B85C" />
+          <circle cx="210" cy="406" r="2.5" fill="#00E5FF" />
+        </g>
+
+        <g class="ring-mid">
+          <circle cx="210" cy="210" r="150" stroke="#E6B85C" stroke-width="0.9" stroke-opacity="0.45" />
+          <polygon points="210,60 360,210 210,360 60,210" stroke="#E6B85C" stroke-width="0.85" stroke-opacity="0.35" />
+          <rect x="104" y="104" width="212" height="212" stroke="#00E5FF" stroke-width="0.7" stroke-opacity="0.22" />
+        </g>
+
+        <g class="ring-inner">
+          <circle cx="210" cy="210" r="96" stroke="#00E5FF" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="2 6" />
+          <polygon points="210,126 283,252 137,252" stroke="#E6B85C" stroke-width="0.9" stroke-opacity="0.55" />
+        </g>
+
+        <line x1="210" y1="6" x2="210" y2="414" stroke="#24335C" stroke-width="0.65" />
+        <line x1="6" y1="210" x2="414" y2="210" stroke="#24335C" stroke-width="0.65" />
+
+        <circle cx="210" cy="210" r="28" fill="#080D1F" stroke="#E6B85C" stroke-width="1.2" />
+        <circle cx="210" cy="210" r="5" fill="#00E5FF" />
+      </svg>
+      <div class="astrolabe-caption">ORBITAL // SANCTUARY</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: calc(100vh - 62px);
+    display: flex;
+    align-items: center;
+    padding: 56px 0 72px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .coord-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .coord-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(230, 184, 92, 0.7);
+  }
+
+  h1 {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .name-line {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 0.96;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .myth-line {
+    font-family: var(--font-myth);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.05;
+    color: var(--gold);
+  }
+
+  .manifesto {
+    margin: 28px 0 0;
+    max-width: 34ch;
+    font-size: clamp(19px, 2.2vw, 23px);
+    font-weight: 500;
+    line-height: 1.38;
+    color: var(--text);
+  }
+
+  .manifesto em {
+    font-family: var(--font-myth);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.18em;
+    color: var(--gold);
+  }
+
+  .bio {
+    margin: 16px 0 0;
+    max-width: 56ch;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .actions {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .astrolabe-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .astrolabe-svg {
+    width: 100%;
+    max-width: 390px;
+    height: auto;
+    filter: drop-shadow(0 0 28px rgba(230, 184, 92, 0.1));
+  }
+
+  .ring-outer {
+    transform-origin: 210px 210px;
+    animation: orbit-cw 95s linear infinite;
+  }
+
+  .ring-mid {
+    transform-origin: 210px 210px;
+    animation: orbit-ccw 70s linear infinite;
+  }
+
+  .ring-inner {
+    transform-origin: 210px 210px;
+    animation: orbit-cw 48s linear infinite;
+  }
+
+  .astrolabe-caption {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: rgba(230, 184, 92, 0.55);
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: auto;
+      padding: 44px 0 56px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .astrolabe-wrap {
+      display: none;
+    }
+  }
+</style>

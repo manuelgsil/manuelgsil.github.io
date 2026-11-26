@@ -1,0 +1,406 @@
+---
+import { MIRAGE_STATION, WHATBOOKIS } from "../data/portfolio";
+
+const tabEntries = Object.entries(MIRAGE_STATION.tabs);
+---
+
+<section id="artefactos" class="section-block">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div class="section-title-wrap">
+        <span class="section-bar" aria-hidden="true"></span>
+        <h2 class="section-title">Artefactos</h2>
+      </div>
+      <span class="section-index">01 // PROYECTOS PROPIOS</span>
+    </div>
+
+    <!-- ARTEFACTO I: MIRAGE STATION (Interactive technical dossier) -->
+    <article class="hud-card artifact-hero" data-reveal>
+      <div class="artifact-top">
+        <div class="artifact-kicker">
+          <span class="mono-tag mono-tag--gold">{MIRAGE_STATION.code}</span>
+          <span class="mono-tag mono-tag--cyan">{MIRAGE_STATION.status}</span>
+        </div>
+        <span class="repo-private">CÓDIGO PRIVADO · CONSULTA BAJO PETICIÓN</span>
+      </div>
+
+      <div class="mirage-grid">
+        <div class="mirage-intro">
+          <h3>{MIRAGE_STATION.name}</h3>
+          <p class="artifact-sub">{MIRAGE_STATION.subtitle}</p>
+          <p class="artifact-summary">{MIRAGE_STATION.summary}</p>
+
+          <!-- Architecture schematic SVG -->
+          <div class="schematic" aria-label="Diagrama simplificado de arquitectura Mirage Station">
+            <svg viewBox="0 0 460 116" fill="none" class="schematic-svg">
+              <rect x="4" y="18" width="132" height="78" rx="4" fill="#080D1F" stroke="#E6B85C" stroke-opacity="0.7" />
+              <text x="70" y="45" text-anchor="middle" fill="#E6B85C" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">ANDROID CLIENT</text>
+              <text x="70" y="63" text-anchor="middle" fill="#8895BF" font-family="JetBrains Mono, monospace" font-size="8.5">Kotlin · Compose</text>
+              <text x="70" y="78" text-anchor="middle" fill="#8895BF" font-family="JetBrains Mono, monospace" font-size="8.5">Media3 · Keystore</text>
+
+              <line x1="136" y1="57" x2="324" y2="57" stroke="#00E5FF" stroke-width="1.2" stroke-dasharray="4 4" />
+              <rect x="166" y="34" width="128" height="46" rx="3" fill="#0E162F" stroke="#00E5FF" stroke-opacity="0.55" />
+              <text x="230" y="54" text-anchor="middle" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700">HMAC-SHA256</text>
+              <text x="230" y="69" text-anchor="middle" fill="#8895BF" font-family="JetBrains Mono, monospace" font-size="8">TLS Pinning · Nonce</text>
+
+              <rect x="324" y="18" width="132" height="78" rx="4" fill="#080D1F" stroke="#E6B85C" stroke-opacity="0.7" />
+              <text x="390" y="45" text-anchor="middle" fill="#E6B85C" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">PC AGENT</text>
+              <text x="390" y="63" text-anchor="middle" fill="#8895BF" font-family="JetBrains Mono, monospace" font-size="8.5">Node 22 Zero-Dep</text>
+              <text x="390" y="78" text-anchor="middle" fill="#8895BF" font-family="JetBrains Mono, monospace" font-size="8.5">FFmpeg · UDP 8788</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="mirage-dossier">
+          <div class="tab-bar" role="tablist" aria-label="Detalles de Mirage Station">
+            {
+              tabEntries.map(([key, tab], idx) => (
+                <button
+                  type="button"
+                  role="tab"
+                  class:list={["tab-btn", { "is-active": idx === 0 }]}
+                  data-tab-target={key}
+                  aria-selected={idx === 0 ? "true" : "false"}
+                >
+                  {tab.label}
+                </button>
+              ))
+            }
+          </div>
+
+          <div class="tab-panels">
+            {
+              tabEntries.map(([key, tab], idx) => (
+                <div class:list={["tab-panel", { "is-active": idx === 0 }]} data-tab-panel={key}>
+                  <h4>{tab.heading}</h4>
+                  <p>{tab.body}</p>
+                  <ul>
+                    {tab.bullets.map((b) => (
+                      <li>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="artifact-stack">
+        {MIRAGE_STATION.stack.map((s) => <span class="mono-tag">{s}</span>)}
+      </div>
+    </article>
+
+    <!-- ARTEFACTO II: WHATBOOKIS (Editorial Literary Showcase) -->
+    <article class="hud-card artifact-secondary" data-reveal>
+      <div class="artifact-top">
+        <div class="artifact-kicker">
+          <span class="mono-tag mono-tag--gold">{WHATBOOKIS.code}</span>
+          <span class="mono-tag mono-tag--cyan">LARAVEL 13 · TFG</span>
+        </div>
+        <a class="repo-cta" href={WHATBOOKIS.repoUrl} target="_blank" rel="noopener">
+          github.com/manuelgsil/whatbookis ↗
+        </a>
+      </div>
+
+      <div class="book-grid">
+        <div class="book-copy">
+          <h3>{WHATBOOKIS.name}</h3>
+          <p class="artifact-sub">{WHATBOOKIS.subtitle}</p>
+          <p class="artifact-summary">{WHATBOOKIS.summary}</p>
+          <ul class="book-list">
+            {WHATBOOKIS.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </div>
+
+        <aside class="excerpt-frame" aria-label="Muestra conceptual de la mecánica de whatbookis">
+          <div class="excerpt-head">
+            <span>FRAGMENTO · #0412</span>
+            <span>VIDAS: 10/10</span>
+          </div>
+          <blockquote>
+            “Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore…”
+          </blockquote>
+          <div class="excerpt-hints">
+            <span class="hint-chip">PISTA 1 · TEMAS</span>
+            <span class="hint-chip">PISTA 2 · AUTOR</span>
+            <span class="hint-chip hint-chip--ai">PISTA 3 · IA</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="artifact-stack">
+        {WHATBOOKIS.stack.map((s) => <span class="mono-tag">{s}</span>)}
+      </div>
+    </article>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const buttons = document.querySelectorAll("[data-tab-target]");
+    const panels = document.querySelectorAll("[data-tab-panel]");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-tab-target");
+        buttons.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => {
+          p.classList.toggle("is-active", p.getAttribute("data-tab-panel") === target);
+        });
+      });
+    });
+  })();
+</script>
+
+<style>
+  .artifact-hero,
+  .artifact-secondary {
+    padding: 30px;
+  }
+
+  .artifact-secondary {
+    margin-top: 22px;
+  }
+
+  .artifact-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .artifact-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .repo-cta {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(230, 184, 92, 0.4);
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .repo-cta:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .repo-private {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  .mirage-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.02;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .artifact-sub {
+    margin: 8px 0 0;
+    font-family: var(--font-myth);
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.25;
+    color: var(--gold);
+  }
+
+  .artifact-summary {
+    margin: 14px 0 0;
+    font-size: 14.5px;
+    color: var(--text-muted);
+  }
+
+  .schematic {
+    margin-top: 22px;
+    padding: 12px;
+    border: 1px solid var(--outline);
+    border-radius: var(--radius-sm);
+    background: rgba(4, 7, 20, 0.72);
+  }
+
+  .schematic-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 10px;
+  }
+
+  .tab-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-xs);
+    padding: 7px 11px;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .tab-btn:hover {
+    color: var(--text);
+  }
+
+  .tab-btn.is-active {
+    color: var(--gold);
+    border-color: rgba(230, 184, 92, 0.45);
+    background: var(--gold-soft);
+  }
+
+  .tab-panel {
+    display: none;
+    padding-top: 18px;
+  }
+
+  .tab-panel.is-active {
+    display: block;
+  }
+
+  .tab-panel h4 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .tab-panel p {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .tab-panel ul,
+  .book-list {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .tab-panel li::marker,
+  .book-list li::marker {
+    color: var(--cyan);
+  }
+
+  .book-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .excerpt-frame {
+    padding: 20px 22px;
+    border: 1px solid var(--outline);
+    border-radius: var(--radius-sm);
+    background: rgba(4, 7, 20, 0.78);
+  }
+
+  .excerpt-head {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  blockquote {
+    margin: 16px 0;
+    font-family: var(--font-myth);
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  .excerpt-hints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .hint-chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 4px 8px;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--outline);
+    color: var(--text-muted);
+  }
+
+  .hint-chip--ai {
+    border-color: rgba(230, 184, 92, 0.45);
+    color: var(--gold);
+  }
+
+  .artifact-stack {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 860px) {
+    .artifact-hero,
+    .artifact-secondary {
+      padding: 22px;
+    }
+
+    .mirage-grid,
+    .book-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

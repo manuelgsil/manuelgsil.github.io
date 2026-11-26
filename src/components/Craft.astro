@@ -1,0 +1,114 @@
+---
+import { CRAFT_PILLARS } from "../data/portfolio";
+---
+
+<section id="oficio" class="section-block">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div class="section-title-wrap">
+        <span class="section-bar" aria-hidden="true"></span>
+        <h2 class="section-title">El oficio</h2>
+      </div>
+      <span class="section-index">02 // CAPACIDADES</span>
+    </div>
+
+    <div class="pillars-grid">
+      {
+        CRAFT_PILLARS.map((p) => (
+          <article class="hud-card pillar-card" data-reveal>
+            <div class="pillar-top">
+              <span class="roman">{p.roman}</span>
+              <span class="mono-tag mono-tag--cyan">{p.code}</span>
+            </div>
+
+            <h3>{p.title}</h3>
+            <p class="pillar-sub">{p.subtitle}</p>
+            <p class="pillar-desc">{p.description}</p>
+
+            <ul>
+              {p.capabilities.map((c) => (
+                <li>{c}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .pillar-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .roman {
+    font-family: var(--font-myth);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .pillar-sub {
+    margin: 8px 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    color: var(--gold);
+  }
+
+  .pillar-desc {
+    margin: 14px 0 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    flex: 1;
+  }
+
+  ul {
+    margin: 18px 0 0;
+    padding: 16px 0 0 16px;
+    border-top: 1px solid var(--hairline);
+    display: grid;
+    gap: 7px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+
+  li::marker {
+    color: var(--gold);
+  }
+
+  @media (max-width: 900px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

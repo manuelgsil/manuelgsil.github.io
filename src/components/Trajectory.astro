@@ -1,0 +1,175 @@
+---
+import { EDUCATION, TIMELINE } from "../data/portfolio";
+---
+
+<section id="trayectoria" class="section-block">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div class="section-title-wrap">
+        <span class="section-bar" aria-hidden="true"></span>
+        <h2 class="section-title">Trayectoria</h2>
+      </div>
+      <span class="section-index">03 // RECORRIDO</span>
+    </div>
+
+    <div class="traj-grid">
+      <div class="exp-col" data-reveal>
+        <div class="col-label">EXPERIENCIA</div>
+        <div class="exp-list">
+          {
+            TIMELINE.map((t) => (
+              <article class:list={["hud-card exp-item", { "exp-item--current": t.current }]}>
+                <div class="exp-head">
+                  <h3>{t.role}</h3>
+                  <span class:list={["mono-tag", t.current ? "mono-tag--gold" : ""]}>{t.period}</span>
+                </div>
+                <p class="exp-org">{t.org}</p>
+                <p class="exp-note">{t.note}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="edu-col" data-reveal>
+        <div class="col-label">FORMACIÓN</div>
+        <div class="edu-list">
+          {
+            EDUCATION.map((e) => (
+              <div class="hud-card edu-item">
+                <span class="edu-period">{e.period}</span>
+                <div class="edu-title">{e.title}</div>
+                <div class="edu-org">{e.org}</div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="hud-card note-card">
+          <div class="note-kicker">IDIOMAS &amp; PERFIL</div>
+          <p>
+            Español nativo · Inglés B2. Venir de <em>Literaturas Comparadas</em> antes de cursar DAW se nota en cómo leo código ajeno, detecto inconsistencias lógicas y documento decisiones sin rodeos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .traj-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .col-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .exp-list,
+  .edu-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  .exp-item {
+    padding: 22px;
+  }
+
+  .exp-item--current {
+    border-color: rgba(230, 184, 92, 0.42);
+  }
+
+  .exp-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 12px;
+  }
+
+  h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .exp-org {
+    margin: 4px 0 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--gold);
+  }
+
+  .exp-note {
+    margin: 12px 0 0;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .edu-item {
+    padding: 16px 18px;
+  }
+
+  .edu-period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--cyan);
+  }
+
+  .edu-title {
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .edu-org {
+    margin-top: 2px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .note-card {
+    margin-top: 14px;
+    padding: 18px;
+  }
+
+  .note-kicker {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .note-card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .note-card em {
+    font-family: var(--font-myth);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text);
+  }
+
+  @media (max-width: 860px) {
+    .traj-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

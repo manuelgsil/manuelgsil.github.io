@@ -1,0 +1,38 @@
+---
+import { PROFILE } from "../data/portfolio";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="mono">{PROFILE.monogram} · {PROFILE.name.toUpperCase()}</span>
+    <span class="mono muted">{PROFILE.coordinates} · {year}</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--hairline);
+    padding: 24px 0 36px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 20px;
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  .muted {
+    color: var(--text-muted);
+  }
+</style>
