@@ -98,9 +98,14 @@ const tabEntries = Object.entries(MIRAGE_STATION.tabs);
           <span class="mono-tag mono-tag--gold">{WHATBOOKIS.code}</span>
           <span class="mono-tag mono-tag--cyan">LARAVEL 13 · TFG</span>
         </div>
-        <a class="repo-cta" href={WHATBOOKIS.repoUrl} target="_blank" rel="noopener">
-          github.com/manuelgsil/whatbookis ↗
-        </a>
+        <div class="artifact-links">
+          <a class="demo-cta" href={WHATBOOKIS.demoUrl} target="_blank" rel="noopener">
+            Probar demo ↗
+          </a>
+          <a class="repo-cta" href={WHATBOOKIS.repoUrl} target="_blank" rel="noopener">
+            Código en GitHub ↗
+          </a>
+        </div>
       </div>
 
       <div class="book-grid">
@@ -180,6 +185,32 @@ const tabEntries = Object.entries(MIRAGE_STATION.tabs);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  .artifact-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .demo-cta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #070a14;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 11px;
+    border-radius: var(--radius-xs);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .demo-cta:hover {
+    background: #f2ca78;
+    transform: translateY(-1px);
   }
 
   .repo-cta {

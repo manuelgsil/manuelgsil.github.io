@@ -81,6 +81,7 @@ export const WHATBOOKIS = {
   code: "ARTEFACTO II",
   name: "whatbookis",
   subtitle: "Plataforma literaria y juego interactivo sobre 873 obras clásicas",
+  demoUrl: "https://whatbookis-t3nw.onrender.com/",
   repoUrl: "https://github.com/manuelgsil/whatbookis",
   summary:
     "Nacido como TFG de DAW y refactorizado a Laravel 13. Propone adivinar una obra a partir de su primer párrafo, con filtros por época o categoría, pistas progresivas con IA y traducción bajo demanda.",
