@@ -96,11 +96,11 @@ const tabEntries = Object.entries(MIRAGE_STATION.tabs);
       <div class="artifact-top">
         <div class="artifact-kicker">
           <span class="mono-tag mono-tag--gold">{WHATBOOKIS.code}</span>
-          <span class="mono-tag mono-tag--cyan">LARAVEL 13 · TFG</span>
+          <span class="mono-tag mono-tag--cyan">{WHATBOOKIS.status}</span>
         </div>
         <div class="artifact-links">
           <a class="demo-cta" href={WHATBOOKIS.demoUrl} target="_blank" rel="noopener">
-            Probar demo ↗
+            Probar demo (WIP) ↗
           </a>
           <a class="repo-cta" href={WHATBOOKIS.repoUrl} target="_blank" rel="noopener">
             Código en GitHub ↗
@@ -116,6 +116,7 @@ const tabEntries = Object.entries(MIRAGE_STATION.tabs);
           <ul class="book-list">
             {WHATBOOKIS.highlights.map((h) => <li>{h}</li>)}
           </ul>
+          <p class="wip-note">{WHATBOOKIS.demoNote}</p>
         </div>
 
         <aside class="excerpt-frame" aria-label="Muestra conceptual de la mecánica de whatbookis">
@@ -354,6 +355,17 @@ const tabEntries = Object.entries(MIRAGE_STATION.tabs);
   .tab-panel li::marker,
   .book-list li::marker {
     color: var(--cyan);
+  }
+
+  .wip-note {
+    margin: 16px 0 0;
+    padding: 10px 12px;
+    border-left: 2px solid var(--gold);
+    background: rgba(230, 184, 92, 0.06);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
   }
 
   .book-grid {
