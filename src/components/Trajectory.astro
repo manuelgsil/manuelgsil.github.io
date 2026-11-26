@@ -46,10 +46,17 @@ import { EDUCATION, TIMELINE } from "../data/portfolio";
         </div>
 
         <div class="hud-card note-card">
-          <div class="note-kicker">IDIOMAS &amp; PERFIL</div>
-          <p>
-            Español nativo · Inglés B2. Venir de <em>Literaturas Comparadas</em> antes de cursar DAW se nota en cómo leo código ajeno, detecto inconsistencias lógicas y documento decisiones sin rodeos.
-          </p>
+          <div class="note-kicker">IDIOMAS</div>
+          <div class="lang-rows">
+            <div class="lang-row">
+              <span>Español</span>
+              <span class="mono-tag mono-tag--gold">Nativo</span>
+            </div>
+            <div class="lang-row">
+              <span>Inglés</span>
+              <span class="mono-tag">B2 · Lectura técnica</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -151,19 +158,20 @@ import { EDUCATION, TIMELINE } from "../data/portfolio";
     font-weight: 700;
     letter-spacing: 0.12em;
     color: var(--gold);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
-  .note-card p {
-    margin: 0;
-    font-size: 13.5px;
-    color: var(--text-muted);
+  .lang-rows {
+    display: grid;
+    gap: 10px;
   }
 
-  .note-card em {
-    font-family: var(--font-myth);
-    font-style: italic;
-    font-size: 16px;
+  .lang-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
     color: var(--text);
   }
 
